@@ -24,8 +24,8 @@ const Routes = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Liked" component={LikedScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Info" component={InfoScreen} />
     </Stack.Navigator>
   );

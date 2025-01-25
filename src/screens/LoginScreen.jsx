@@ -1,4 +1,4 @@
-import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../themes/Colors';
@@ -6,7 +6,9 @@ import LoginButton from '../components/LoginButton';
 
 const LoginScreen = () => {
   return (
-    <LinearGradient colors={['#040306', '#131624']} style={{flex: 1}}>
+    <LinearGradient
+      colors={['#040306', '#131624']}
+      style={styles.linearGradient}>
       <SafeAreaView>
         <View style={{height: 60}} />
         <FontAwesome
@@ -57,6 +59,9 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+  },
   spotifyIcon: {
     textAlign: 'center',
   },
