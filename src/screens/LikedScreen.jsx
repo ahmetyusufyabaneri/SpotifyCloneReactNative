@@ -36,6 +36,11 @@ const LikedScreen = () => {
             <Text style={styles.sortText}>Sort</Text>
           </Pressable>
         </Pressable>
+        <View style={{height: 40}} />
+        <View style={{marginHorizontal: 10}}>
+          <Text style={styles.title}>Liked Songs</Text>
+          <Text style={styles.songCountText}>420 Songs</Text>
+        </View>
       </SafeAreaView>
     </LinearGradient>
   );
@@ -80,5 +85,15 @@ const styles = StyleSheet.create({
   },
   sortText: {
     color: '#fff',
+  },
+  title: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: '700',
+  },
+  songCountText: {
+    fontSize: 14,
+    color: '#fff',
+    marginTop: 6,
   },
 });
