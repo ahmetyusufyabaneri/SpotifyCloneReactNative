@@ -1,5 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {
+  ActivityIndicator,
+  FlatList,
   Pressable,
   SafeAreaView,
   StyleSheet,
@@ -9,9 +11,15 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {Colors} from '../themes/Colors';
+import {useState} from 'react';
+import SongItem from '../components/SongItem';
 
 const LikedScreen = () => {
   const navigation = useNavigation();
+
+  const [searchedTracks, setSearchedTracks] = useState([1]);
 
   return (
     <LinearGradient
@@ -41,6 +49,31 @@ const LikedScreen = () => {
           <Text style={styles.title}>Liked Songs</Text>
           <Text style={styles.songCountText}>420 Songs</Text>
         </View>
+        <Pressable style={styles.topButtonsContainer}>
+          <Pressable style={styles.arrowButtonContainer}>
+            <Ionicons name="arrow-down" color="#fff" size={24} />
+          </Pressable>
+          <View style={styles.rightButtons}>
+            <FontAwesome name="random" color={Colors.main} size={24} />
+            <Pressable style={styles.playButtonContainer}>
+              <Ionicons name="play" color="#fff" size={32} />
+            </Pressable>
+          </View>
+        </Pressable>
+        {searchedTracks.length === 0 ? (
+          <View
+            style={{
+              height: '60%',
+              justifyContent: 'center',
+            }}>
+            <ActivityIndicator color={'#fff'} size={'large'} />
+          </View>
+        ) : (
+          <FlatList
+            data={searchedTracks}
+            renderItem={({item}) => <SongItem />}
+          />
+        )}
       </SafeAreaView>
     </LinearGradient>
   );
@@ -95,5 +128,32 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#fff',
     marginTop: 6,
+  },
+  topButtonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 8,
+  },
+  arrowButtonContainer: {
+    width: 40,
+    height: 40,
+    backgroundColor: Colors.main,
+    borderRadius: 999,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightButtons: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 24,
+  },
+  playButtonContainer: {
+    width: 60,
+    height: 60,
+    backgroundColor: Colors.main,
+    borderRadius: 999,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
