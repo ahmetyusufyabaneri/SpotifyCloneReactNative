@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {
   ActivityIndicator,
   FlatList,
+  Image,
   Pressable,
   SafeAreaView,
   StyleSheet,
@@ -15,6 +16,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../themes/Colors';
 import {useState} from 'react';
 import SongItem from '../components/SongItem';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Foundation from 'react-native-vector-icons/Foundation';
+import {ModalContent} from 'react-native-modals';
 
 const LikedScreen = () => {
   const navigation = useNavigation();
@@ -22,60 +26,84 @@ const LikedScreen = () => {
   const [searchedTracks, setSearchedTracks] = useState([1]);
 
   return (
-    <LinearGradient
-      colors={['#614385', '#516395']}
-      style={styles.linearGradient}>
-      <SafeAreaView>
-        <Pressable
-          onPress={() => navigation.goBack()}
-          style={styles.goBackButton}>
-          <Ionicons name="arrow-back" color="#fff" size={32} />
-        </Pressable>
-        <Pressable style={styles.top}>
-          <Pressable style={styles.searchInputContainer}>
-            <Ionicons name="search-outline" color="#fff" size={24} />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Find in Songs"
-              placeholderTextColor={'#fff'}
-            />
+    <>
+      <LinearGradient
+        colors={['#614385', '#516395']}
+        style={styles.linearGradient}>
+        <SafeAreaView>
+          <Pressable
+            onPress={() => navigation.goBack()}
+            style={styles.goBackButton}>
+            <Ionicons name="arrow-back" color="#fff" size={32} />
           </Pressable>
-          <Pressable style={styles.sort}>
-            <Text style={styles.sortText}>Sort</Text>
-          </Pressable>
-        </Pressable>
-        <View style={{height: 40}} />
-        <View style={{marginHorizontal: 10}}>
-          <Text style={styles.title}>Liked Songs</Text>
-          <Text style={styles.songCountText}>420 Songs</Text>
-        </View>
-        <Pressable style={styles.topButtonsContainer}>
-          <Pressable style={styles.arrowButtonContainer}>
-            <Ionicons name="arrow-down" color="#fff" size={24} />
-          </Pressable>
-          <View style={styles.rightButtons}>
-            <FontAwesome name="random" color={Colors.main} size={24} />
-            <Pressable style={styles.playButtonContainer}>
-              <Ionicons name="play" color="#fff" size={32} />
+          <Pressable style={styles.top}>
+            <Pressable style={styles.searchInputContainer}>
+              <Ionicons name="search-outline" color="#fff" size={24} />
+              <TextInput
+                style={styles.searchInput}
+                placeholder="Find in Songs"
+                placeholderTextColor={'#fff'}
+              />
             </Pressable>
+            <Pressable style={styles.sort}>
+              <Text style={styles.sortText}>Sort</Text>
+            </Pressable>
+          </Pressable>
+          <View style={{height: 40}} />
+          <View style={{marginHorizontal: 10}}>
+            <Text style={styles.title}>Liked Songs</Text>
+            <Text style={styles.songCountText}>420 Songs</Text>
           </View>
-        </Pressable>
-        {searchedTracks.length === 0 ? (
+          <Pressable style={styles.topButtonsContainer}>
+            <Pressable style={styles.arrowButtonContainer}>
+              <Ionicons name="arrow-down" color="#fff" size={24} />
+            </Pressable>
+            <View style={styles.rightButtons}>
+              <FontAwesome name="random" color={Colors.main} size={24} />
+              <Pressable style={styles.playButtonContainer}>
+                <Ionicons name="play" color="#fff" size={32} />
+              </Pressable>
+            </View>
+          </Pressable>
+          {/* {searchedTracks.length === 0 ? (
           <View
-            style={{
-              height: '60%',
-              justifyContent: 'center',
+          style={{
+            height: '60%',
+            justifyContent: 'center',
             }}>
             <ActivityIndicator color={'#fff'} size={'large'} />
-          </View>
-        ) : (
-          <FlatList
-            data={searchedTracks}
-            renderItem={({item}) => <SongItem />}
+            </View>
+            ) : (
+              <FlatList
+              data={searchedTracks}
+              renderItem={({item}) => <SongItem />}
+              />
+              )} */}
+        </SafeAreaView>
+      </LinearGradient>
+
+      <Pressable style={styles.songControlContainer}>
+        <View style={styles.songControlContainerLeft}>
+          <Image
+            source={{
+              uri: 'https://img.freepik.com/premium-photo/square-frame-neon-picture-frame-blank-empty-background-pretty-backdrop_715671-3153.jpg',
+            }}
+            style={{width: 40, height: 40, borderRadius: 4}}
           />
-        )}
-      </SafeAreaView>
-    </LinearGradient>
+          <Text style={styles.songName}>Song name</Text>
+        </View>
+        <View style={styles.songControlContainerRight}>
+          <AntDesign name="heart" size={24} color={Colors.main} />
+          <Foundation name="pause" size={36} color="#fff" />
+        </View>
+      </Pressable>
+
+      <ModalContent>
+        <View>
+          <Text>Selam</Text>
+        </View>
+      </ModalContent>
+    </>
   );
 };
 
@@ -155,5 +183,34 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  songControlContainer: {
+    backgroundColor: '#5072a7',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 12,
+    marginHorizontal: 'auto',
+    position: 'absolute',
+    left: 16,
+    right: 16,
+    bottom: 32,
+    borderRadius: 6,
+    marginBottom: 16,
+  },
+  songControlContainerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  songName: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  songControlContainerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 24,
   },
 });
