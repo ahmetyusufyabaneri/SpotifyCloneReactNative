@@ -98,9 +98,45 @@ const LikedScreen = () => {
         </View>
       </Pressable>
 
-      <ModalContent>
-        <View>
-          <Text>Selam</Text>
+      <ModalContent
+        style={{backgroundColor: '#5072a7', width: '100%', height: '100%'}}>
+        <View style={{marginTop: 40}}>
+          <Pressable
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <AntDesign name="down" size={24} color={'#fff'} />
+            <Text style={{fontSize: 14, fontWeight: '700', color: '#fff'}}>
+              Song Name
+            </Text>
+            <Ionicons name="ellipsis-vertical" size={24} color={'#fff'} />
+          </Pressable>
+          <View style={{padding: 12}}>
+            <Image
+              source={{
+                uri: 'https://papers.co/wallpaper/papers.co-vf85-square-party-green-yellow-pattern-6-wallpaper.jpg',
+              }}
+              style={{width: '100%', height: 340, borderRadius: 4}}
+            />
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginTop: 20,
+              }}>
+              <View>
+                <Text style={{fontSize: 18, fontWeight: '700', color: '#fff'}}>
+                  Song Name
+                </Text>
+                <Text style={{color: '#d3d3d3', marginTop: 4}}>
+                  Artist Name
+                </Text>
+              </View>
+              <AntDesign name="heart" size={24} color={Colors.main} />
+            </View>
+          </View>
         </View>
       </ModalContent>
     </>
