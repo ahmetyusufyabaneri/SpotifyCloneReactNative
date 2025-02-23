@@ -128,11 +128,9 @@ const LikedScreen = () => {
               }}>
               <View>
                 <Text style={{fontSize: 18, fontWeight: '700', color: '#fff'}}>
-                  Song Name
+                  Hello
                 </Text>
-                <Text style={{color: '#d3d3d3', marginTop: 4}}>
-                  Artist Name
-                </Text>
+                <Text style={{color: '#d3d3d3', marginTop: 4}}>Adele</Text>
               </View>
               <AntDesign name="heart" size={24} color={Colors.main} />
             </View>
