@@ -134,6 +134,11 @@ const LikedScreen = () => {
               </View>
               <AntDesign name="heart" size={24} color={Colors.main} />
             </View>
+            <View>
+              <View>
+                <View style={[styles.progressBar, {}]} />
+              </View>
+            </View>
           </View>
         </View>
       </ModalContent>
@@ -246,5 +251,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 24,
+  },
+  progressBar: {
+    height: '100%',
+    backgroundColor: '#fff',
   },
 });
